@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPT Assistant UI</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.0/p5.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="tabs-list" id="tabsList">
+      <!-- Tabs will be dynamically inserted here -->
+      <button class="add-tab-button" onclick="openNewTabDialog()">+ Add New</button>
+    </div>
+    <div id="tabContent" class="tab-content">
+      <!-- Tab content dynamically inserted here -->
+    </div>
+    <div class="input-container">
+      <input type="text" id="messageInput" placeholder="Type your message here...">
+      <button onclick="handleSend()">Send</button>
+    </div>
+  </div>
+
+  <!-- Dialog to Add/Edit Tabs -->
+  <div class="dialog" id="newTabDialog">
+    <div class="dialog-content">
+      <h3>Add/Edit Assistant</h3>
+      <label for="newTabTitle">Title</label>
+      <input type="text" id="newTabTitle">
+      <label for="newTabSystemPrompt">System Prompt</label>
+      <textarea id="newTabSystemPrompt"></textarea>
+      <button id="saveTabButton" onclick="addNewTab()">Save</button>
+      <button onclick="closeNewTabDialog()">Close</button>
+    </div>
+  </div>
+
+  <script src="sketch.js"></script>
+</body>
+</html>
