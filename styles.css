@@ -1,313 +1,275 @@
 /* General Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f7fc;
-    color: #333;
-    line-height: 1.6;
-    padding: 20px;
-  }
-  
-  /* Container Styles */
-  .container {
-    max-width: 1000px; /* Increased width */
-    margin: 0 auto;
-    background: #ffffff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* Tabs List */
-  .tabs-list {
-    display: flex;
-    flex-wrap: wrap;
-    background-color: #f8f9fc;
-    padding: 10px 15px;
-    border-bottom: 2px solid #e1e5f2;
-    gap: 10px;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* Main Container */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e6e6e6;
+}
+
+/* Tabs List */
+.tabs-list {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  /* border-bottom: 1px solid #e6e6e6; */
+  background-color: #ffffff;
+  padding: 10px;
+  gap: 8px;
+}
+
+.tab-group {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.tab-group:hover {
+  background-color: #e0e0e0;
+}
+
+.tab-group.active {
+  background-color: #0066ff;
+  color: #ffffff;
+}
+
+.tab-title {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.tab-actions {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.tab-actions button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.2s ease;
+}
+
+.tab-actions button:hover {
+  opacity: 0.7;
+}
+
+.tab-actions .icon {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+}
+
+/* Add New Button */
+.add-tab-button {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  background-color: #0066ff;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-tab-button:hover {
+  background-color: #004db3;
+}
+
+/* Tab Content */
+.tab-content {
+  padding: 20px;
+  min-height: 400px;
+  background-color: #f9f9f9;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.user-message,
+.bot-message {
+  padding: 12px 16px;
+  border-radius: 8px;
+  max-width: 70%;
+  word-wrap: break-word;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  font-size: 14px;
+}
+
+.user-message {
+  align-self: flex-end;
+  background-color: #e7f4ff;
+  color: #004080;
+}
+
+.bot-message {
+  align-self: flex-start;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Input Container */
+.input-container {
+  display: flex;
+  gap: 10px;
+  padding: 12px;
+  /* border-top: 1px solid #e6e6e6; */
+  background-color: #ffffff;
+}
+
+input {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+input:focus {
+  border-color: #0066ff;
+}
+
+button {
+  padding: 10px 14px;
+  font-size: 14px;
+  background-color: #0066ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #004db3;
+}
+
+/* Dialog Styles */
+.dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  display: none;
+}
+
+.dialog-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center horizontally and vertically */
+  background: white;
+  width: 400px;
+  max-width: 90%;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dialog-content h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.dialog-content label {
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #555;
+}
+
+.dialog-content input,
+.dialog-content textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.dialog-content button {
+  padding: 10px 14px;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dialog-content button:first-child {
+  background-color: #0066ff;
+  color: white;
+  border: none;
+}
+
+.dialog-content button:first-child:hover {
+  background-color: #004db3;
+}
+
+.dialog-content button:last-child {
+  background-color: #f9f9f9;
+  color: #333;
+  border: 1px solid #e6e6e6;
+}
+
+.dialog-content button:last-child:hover {
+  background-color: #e6e6e6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .tab-group {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    background-color: #dfe7f3;
-    border-radius: 5px;
-    padding: 5px 10px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    cursor: pointer;
-  }
-  
-  .tab-group:hover {
-    background-color: #c1d3f0;
-    transform: scale(1.02);
-  }
-  
-  .tab-group.active {
-    background-color: #0066ff;
-    color: #fff;
-  }
-  
-  .tab-group .tab-title {
-    font-weight: bold;
-  }
-  
-  .tab-group .tab-actions {
-    display: flex;
-    gap: 5px;
-  }
-  
-  .tab-group .tab-actions button {
-    font-size: 14px;
-    border: none;
-    background: none;
-    color: inherit;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  
-  .tab-group .tab-actions button:hover {
-    color: #004db3;
+    padding: 6px 10px;
   }
 
-  
-  
-  /* Add New Button */
-  .add-tab-button {
-    padding: 8px 15px;
-    font-size: 14px;
-    border: none;
-    border-radius: 5px;
-    background-color: #0066ff;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .add-tab-button:hover {
-    background-color: #004db3;
-    transform: scale(1.05);
-  }
-  
-  /* Tab Content */
-  .tab-content {
-    padding: 20px;
-    height: 600px; /* Enlarged height */
-    overflow-y: auto;
-    background-color: #f8faff;
-    border-bottom: 2px solid #e1e5f2;
-  }
-  
-  .chat-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    height: 100%; /* Fill the available space */
-  }
-  
   .user-message,
   .bot-message {
-    padding: 15px 20px; /* Slightly larger padding */
-    border-radius: 8px;
-    max-width: 70%;
-    word-wrap: break-word;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-size: 16px; /* Larger font */
+    max-width: 85%;
+    font-size: 13px;
   }
-  
-  .user-message {
-    align-self: flex-end;
-    background-color: #d1f7c4;
-    color: #2b7a0b;
-  }
-  
-  .bot-message {
-    align-self: flex-start;
-    background-color: #e7f0ff;
-    color: #004db3;
-  }
-  
-  /* Input Container */
-  .input-container {
-    display: flex;
-    gap: 10px;
-    padding: 20px; /* Enlarged padding */
-    background-color: #f8f9fc;
-    border-top: 2px solid #e1e5f2;
-  }
-  
-  input {
-    flex-grow: 1;
-    padding: 15px; /* Larger padding for input */
-    font-size: 18px; /* Increased font size */
-    border: 2px solid #dfe7f3;
-    border-radius: 5px;
-    transition: border-color 0.3s ease;
-  }
-  
-  input:focus {
-    border-color: #0066ff;
-    outline: none;
-  }
-  
-  button {
-    padding: 15px 25px; /* Larger buttons */
-    font-size: 18px; /* Increased font size */
-    background-color: #0066ff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  button:hover {
-    background-color: #004db3;
-    transform: scale(1.05);
-  }
-  
-  /* Dialog */
-  .dialog {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    display: none; /* Hidden by default */
-  }
-  
-  .dialog-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Center horizontally and vertically */
-    background: white;
-    width: 400px;
-    max-width: 90%;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  
-  
-  .dialog-content h3 {
-    font-size: 20px;
-    margin-bottom: 15px;
-    color: #333;
-  }
-  
-  .dialog-content label {
-    display: block;
-    text-align: left;
-    margin-bottom: 5px;
-    font-weight: bold;
-    font-size: 14px;
-    color: #555;
-  }
-  
-  .dialog-content input,
-  .dialog-content textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 2px solid #dfe7f3;
-    border-radius: 5px;
-    font-size: 14px;
-  }
-  
-  .dialog-content button {
-    padding: 10px 15px;
-    font-size: 14px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .dialog-content button:first-child {
-    background-color: #0066ff;
-    color: white;
-    border: none;
-    transition: background-color 0.3s ease;
-  }
-  
-  .dialog-content button:first-child:hover {
-    background-color: #004db3;
-  }
-  
-  .dialog-content button:last-child {
-    background-color: #f5f5f5;
-    color: #333;
-    border: 1px solid #ccc;
-  }
-  
-  .dialog-content button:last-child:hover {
-    background-color: #e1e1e1;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .tab-group {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 5px;
-    }
-  
-    .tab-content {
-      height: 400px; /* Adjusted for smaller screens */
-    }
-  
-    .user-message,
-    .bot-message {
-      max-width: 85%;
-    }
-  }
-  
-  .tab-group {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    background-color: #dfe7f3;
-    border-radius: 5px;
-    padding: 5px 10px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    cursor: pointer;
-  }
-  
-  .tab-group.dragging {
-    opacity: 0.5; /* Dim the tab while dragging */
-  }
-  
-  .tab-actions button {
-    font-size: 14px;
-    border: none;
-    background: none;
-    color: inherit;
-    cursor: pointer;
-    padding: 0px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s ease;
-  }
-  
-  .tab-actions button:hover {
-    transform: scale(1.2); /* Slight enlargement on hover */
-  }
-  
-  .tab-actions .icon {
-    width: 18px; /* Adjust icon size */
-    height: 18px;
-  }
-  
+}
