@@ -6,11 +6,12 @@
 }
 
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f9f9f9;
+  font-family: 'Poppins', sans-serif;
+  background-color: #ffffff;
   color: #333;
   line-height: 1.6;
   padding: 20px;
+  overflow: hidden;
 }
 
 /* Main Container */
@@ -20,10 +21,10 @@ body {
   background: #ffffff;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
   display: flex;
   flex-direction: column;
-  border: 1px solid #e6e6e6;
+  border: 1px solid #dcdcdc;
 }
 
 /* Tabs List */
@@ -33,7 +34,8 @@ body {
   overflow-x: auto;
   /* border-bottom: 1px solid #e6e6e6; */
   background-color: #ffffff;
-  padding: 10px;
+  padding: 15px;
+  height:auto;
   gap: 8px;
 }
 
@@ -54,8 +56,9 @@ body {
 }
 
 .tab-group.active {
-  background-color: #0066ff;
+  background-color: #606060;
   color: #ffffff;
+  font:bold;
 }
 
 .tab-title {
@@ -65,7 +68,7 @@ body {
 
 .tab-actions {
   display: flex;
-  gap: 5px;
+  gap: 1px;
   align-items: center;
 }
 
@@ -73,14 +76,14 @@ body {
   border: none;
   background: none;
   cursor: pointer;
-  padding: 4px;
+  padding: 2px;
   display: flex;
   align-items: center;
   transition: opacity 0.2s ease;
 }
 
 .tab-actions button:hover {
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 .tab-actions .icon {
@@ -95,29 +98,33 @@ body {
   font-size: 14px;
   border: none;
   border-radius: 8px;
-  background-color: #0066ff;
-  color: white;
+  background-color: #fffffff7;
+  color: rgb(0, 0, 0);
   font-weight: 500;
+  border-color: black;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .add-tab-button:hover {
-  background-color: #004db3;
+  background-color: #d3d3d3;
 }
 
 /* Tab Content */
 .tab-content {
   padding: 20px;
-  min-height: 400px;
-  background-color: #f9f9f9;
+  height: 700px; /* Fixed height */
+  overflow-y: auto; /* Enable vertical scrolling within the tab content */
+  background-color: #fafafa;
 }
 
 .chat-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 30px;
+  scroll-behavior: smooth;
 }
+
 
 .user-message,
 .bot-message {
@@ -144,6 +151,7 @@ body {
 /* Input Container */
 .input-container {
   display: flex;
+  height:80px;
   gap: 10px;
   padding: 12px;
   /* border-top: 1px solid #e6e6e6; */
@@ -167,7 +175,7 @@ input:focus {
 button {
   padding: 10px 14px;
   font-size: 14px;
-  background-color: #0066ff;
+  background-color: #000000;
   color: white;
   border: none;
   border-radius: 8px;
@@ -176,7 +184,7 @@ button {
 }
 
 button:hover {
-  background-color: #004db3;
+  background-color: #e2e2e2;
 }
 
 /* Dialog Styles */
@@ -270,6 +278,10 @@ button:hover {
   .user-message,
   .bot-message {
     max-width: 85%;
-    font-size: 13px;
+    font-size: 14px;
   }
+}
+
+.tab-group.active svg path {
+  stroke: white; /* Set the fill color to white when the tab is active */
 }
