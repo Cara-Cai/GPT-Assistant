@@ -12,6 +12,7 @@ body {
   line-height: 1.6;
   padding: 20px;
   overflow: hidden;
+  margin-top: 2%;
 }
 
 /* Main Container */
@@ -113,7 +114,7 @@ body {
 /* Tab Content */
 .tab-content {
   padding: 20px;
-  height: 700px; /* Fixed height */
+  height: 600px; /* Fixed height */
   overflow-y: auto; /* Enable vertical scrolling within the tab content */
   background-color: #fafafa;
 }
@@ -284,4 +285,8 @@ button:hover {
 
 .tab-group.active svg path {
   stroke: white; /* Set the fill color to white when the tab is active */
+}
+
+.center-text {
+  text-align: center;
 }
